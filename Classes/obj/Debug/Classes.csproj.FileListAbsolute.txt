@@ -1,0 +1,12 @@
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\Classes.dll.config
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\Classes.dll
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\Classes.pdb
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\EntityFramework.dll
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\EntityFramework.xml
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\viktor.ilieski\source\repos\Library\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+C:\Users\viktor.ilieski\source\repos\Library\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
+C:\Users\viktor.ilieski\source\repos\Library\Classes\obj\Debug\Classes.csproj.CopyComplete
+C:\Users\viktor.ilieski\source\repos\Library\Classes\obj\Debug\Classes.dll
+C:\Users\viktor.ilieski\source\repos\Library\Classes\obj\Debug\Classes.pdb

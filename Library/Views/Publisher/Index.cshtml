@@ -1,0 +1,122 @@
+﻿@using Library.Models
+@model PublisherViewModel
+@*@model IEnumerable<Library.Models.PublisherViewModel>*@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Publishers</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div class="Flex">
+    <button class="btn btn-outline-info" onclick="AddNewPublisher()"><i class="fa fa-male"></i> AddNew</button>
+</div>
+<table id="publisherTable" class="table table-bordered table-hover" style="width: 100% !important">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookNr)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="Tbody">
+
+    </tbody>
+</table>
+<div class="modal" role="dialog" id="NewPubModal">
+    <div class="modal-dialog" role="document">
+        @using (Ajax.BeginForm("Create", "Publisher", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "AddedNew", OnFailure = "Error" }))
+        {
+            <div class="modal-content" style="background-color: cornsilk;">
+                <div class="modal-header">
+                    <div class="FlexBox">
+                        <h4>
+                            Add New Publisher
+                            @Html.HiddenFor(x => x.Id)
+                        </h4>
+                        <button class="btn" data-dismiss="modal">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body" style="background-color: antiquewhite;">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Name)
+                        @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control", @required = true }})
+                        @Html.ValidationMessageFor(x => x.Name, "", new { style = "color:crimson" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Country)
+                        @Html.EditorFor(x => x.Country, new { htmlAttributes = new { @class = "form-control", @required = true }})
+                        @Html.ValidationMessageFor(x => x.Country, "", new { style = "color:crimson" })
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
+                        <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="modal" role="dialog" id="DetPubModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: cornsilk;">
+            <div class="modal-header">
+                <div class="FlexBox">
+                    <h4>
+                        Details about this publisher
+                    </h4>
+                    <button class="btn" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body" id="DetailsModalBody" style="background-color: antiquewhite;">
+                <div>
+                    <h4>PublisherViewModel</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <span id="PublisherName"></span>
+                        </dd>
+                        <dt>
+                            Country
+                        </dt>
+                        <dd>
+                            <span id="PublisherCountry"></span>
+                        </dd>
+                        <dt>
+                            Book Nr.
+                        </dt>
+
+                        <dd>
+                            <span id="PublisherBookNr"></span>
+                        </dd>
+                    </dl>
+                    <p>
+                        @Html.ActionLink("Back to list", "Index")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/App/Publisher.js"></script>
+    
+    }

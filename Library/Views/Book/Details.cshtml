@@ -1,0 +1,54 @@
+﻿@model Library.Models.BookViewModel
+
+<div>
+    <h4>BookViewModel</h4>
+    <hr />
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.YearOfIssue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearOfIssue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfPages)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfPages)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Publisher)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LendingsNr)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LendingsNr)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookNr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookNr)
+        </dd>
+ 
+    </dl>
+
+    <p>
+        @*  @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | *@
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+        @Html.ActionLink("Back to List", "Book")
+        
+    </p>
+</div>

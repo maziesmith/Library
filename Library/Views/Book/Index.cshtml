@@ -1,0 +1,90 @@
+﻿@using Library.Models
+@model BookViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Books</h2>
+<div class="Flex">
+    <button class="btn btn-outline-info" onclick="AddNewBook()"><i class="fa fa-book"></i> AddNew</button>
+</div>
+<table id="table-book" class="table table-bordered table-hover" style="width:100% !important;">
+    <thead>
+
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Year Of Issue
+            </th>
+            <th>
+                Number Of Pages
+            </th>
+            <th>
+                Publisher
+            </th>
+            <th>
+                    Book Copies
+            </th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody id="Tbody"></tbody>
+</table>
+@Html.Action("NewBookViewModel","Book")
+<div class="modal" role="dialog" id="DetBookModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: cornsilk;">
+            <div class="modal-header">
+                <div class="FlexBox">
+                    <h4>Details about this book</h4>
+                    <button class="btn" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body" id="DetailsModalBody" style="background-color: antiquewhite;">
+                <div>
+                    <h4>BookViewModel</h4>
+                    <hr />
+                    
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Title
+                        </dt>
+                        <dd>
+                            <span id="BookTitle"></span>
+                        </dd>
+                        <dt>
+                            Year of Issue
+                        </dt>
+                        <dd>
+                            <span id="BookYearOfIssue"></span>
+                        </dd>
+                        <dt>
+                            Number of Pages
+                        </dt>
+                        <dd>
+                            <span id="BookNrOfPages"></span>
+                        </dd>
+                        <dt>
+                            Book Copies
+                        </dt>
+                        <dd>
+                            <span id="BookNr"></span>
+                        </dd>
+                    </dl>
+                    <p>
+                        @Html.ActionLink("Back to list", "Index")
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/App/Book.js"></script>
+}

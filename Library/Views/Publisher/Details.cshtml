@@ -1,0 +1,32 @@
+﻿@model Library.Models.PublisherViewModel
+
+
+<div>
+    <h4>PublisherViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookNr)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookNr)
+        </dd>
+    </dl>
+
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Library")
+</p>
+

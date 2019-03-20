@@ -1,0 +1,44 @@
+﻿@using Library.Models
+@model BookViewModel
+<div class="modal" role="dialog" id="NewBookModal" style="z-index: 2000;">
+    <div class="modal-dialog" role="document">
+        @using (Ajax.BeginForm("Create", "Book", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "AddedNew", OnFailure = "Error" }))
+        {
+            <div class="modal-content" style="background-color: cornsilk;">
+                <div class="modal-header">
+                    <div class="FlexBox">
+                        <h4>
+                            Add New Book
+                            @Html.HiddenFor(x => x.Id)
+                        </h4>
+                        <button class="btn" data-dismiss="modal">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body" style="background-color: antiquewhite;">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Title)
+                        @Html.EditorFor(x => x.Title, new { HtmlAttributes = new { @class = "form-control", @required = true } })
+                        @Html.ValidationMessageFor(x => x.Title, "", new { style = "color: crimson" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.YearOfIssue)
+                        @Html.DropDownListFor(m => m.YearOfIssue, Enumerable.Range(0, (DateTime.Now.Year - 1990)).Select(i => new SelectListItem { Text = (DateTime.Now.Year - i).ToString(), Value = (DateTime.Now.Year - i).ToString() }), "Please select year of issue", new { @class = "form-control", @required = "required" })
+                        @*@Html.EditorFor(x => x.YearOfIssue, new { HtmlAttributes = new { @class = "form-control", @required = true } })*@
+                        @Html.ValidationMessageFor(x => x.YearOfIssue, "", new { style = "color: crimson" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.NumberOfPages)
+                        @Html.EditorFor(x => x.NumberOfPages, new { HtmlAttributes = new { @class = "form-control", @required = true } })
+                        @Html.ValidationMessageFor(x => x.NumberOfPages, "", new { style = "color: crimson" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"> Submit</i></button>
+                        <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

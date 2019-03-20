@@ -1,0 +1,263 @@
+﻿@using Library.Models
+@model LibraryViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Libraries</h2>
+
+
+
+<div class="Flex">
+    <button class="btn btn-outline-info" onclick="AddNewLibrary()"><i class="fa fa-book"></i> AddNew</button>
+</div>
+<table id="table-library" class="table table-bordered table-hover" style="width:100% !important;">
+    <thead>
+        <tr style="text-align:center;">
+            <th>
+                Name
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Address
+            </th>
+            @*<th>
+                Books Nr.
+            </th>*@
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody id="Tbody"></tbody>
+</table>
+
+<div class="modal" role="dialog" id="NewLibModal">
+    <div class="modal-dialog" role="document">
+        @using (Ajax.BeginForm("Create", "Library", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "AddedNew", OnFailure = "Error" }))
+        {
+            <div class="modal-content" style="background-color: cornsilk;">
+                <div class="modal-header">
+                    <div class="FlexBox">
+                        <h4>
+                            Add New Library
+                            @Html.HiddenFor(x => x.Id)
+                        </h4>
+                        <button class="btn" data-dismiss="modal">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body" style="background-color: antiquewhite;">
+
+                    <div class="form-group">
+                        @* <div class="f"> *@
+                        @Html.LabelFor(x => x.Name)
+                        @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                        @Html.ValidationMessageFor(x => x.Name, "", new { style = "color:crimson" })
+                        @* </div> *@
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.City)
+                        @Html.EditorFor(x => x.City, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                        @Html.ValidationMessageFor(x => x.City, "", new { style = "color:crimson" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Address)
+                        @Html.EditorFor(x => x.Address, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                        @Html.ValidationMessageFor(x => x.Address, "", new { style = "color:crimson" })
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
+                        <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@Html.Action("NewBookViewModel", "Book")
+<div class="modal" role="dialog" id="DetLibModal" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="background-color: cornsilk;">
+            <div class="modal-header">
+                <div class="FlexBox">
+                    <h4>
+                        Details about this library!
+                    </h4>
+                    <button class="btn" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body" id="DatailsModalBody" style="background-color: antiquewhite;">
+                <div>
+                    <h4>LibraryViewModel</h4>
+                    <hr />
+                    <h4 style="text-align: center; position: relative; left: 13%;">Available Books</h4>
+                    <hr style="width: 75%; position: relative; left: 11%;" />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Name
+                        </dt>
+
+                        <dd>
+                            <span id="LibraryName"></span>
+                        </dd>
+
+                        <dt>
+                            City
+                        </dt>
+
+                        <dd>
+                            <span id="LibraryCity"></span>
+                        </dd>
+
+                        <dt>
+                            Address
+                        </dt>
+
+                        <dd>
+                            <span id="LibraryAddress"></span>
+                        </dd>
+
+                        <dt>
+                            Number of books
+                        </dt>
+
+                        <dd>
+                            <span id="LibraryBookNr"></span>
+                        </dd>
+
+
+                    </dl>
+                    <table id="LibraryBooks" class="table table-bordered table-hover" style=" position: absolute; top: 25%; width: 586px; left: 24.5%;">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Year Of Issue
+                                </th>
+                                <th>
+                                    Number Of Pages
+                                </th>
+                                <th>
+                                    Number of Lendings
+                                </th>
+
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="Tbody" style="text-align:center;"></tbody>
+
+                    </table>
+                    <input type="hidden" id="LibraryId" />
+                    <button type="button" onclick="AddBookLib()" class="btn btn-primary" style="position: absolute; left: 57%; top: 90%;"><i class="fa fa-book"></i> AddBook</button>
+                    @*<button type="button" onclick="AddNewBook()"  class="btn btn-dark" style="position: absolute; left: 40%; top: 90%;"><i class="fa fa-book"></i><a data-toggle="modal" href="~/Views/Book/Index.cshtml" data-target="#NewBookModal"> NewBook</a></button>*@
+                    <a  style="position: absolute; left: 40%; top: 90%; font: 15px Arial;text-decoration: none;background-color: #007bff;color: white;padding: 10px 13px 10px 13px;border-top: 1px solid #CCCCCC;border-right: 1px solid;border-bottom: 1px solid;border-left: 1px solid #CCCCCC; border-radius: 0.25rem;" data-toggle="modal" href="~/Views/Book/Index.cshtml" data-target="#NewBookModal"><i class="fa fa-book"></i> NewBook</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<div class="modal" role="dialog" id="BookLibModal" data-keyboard="false">
+    <div class="modal-dialog" role="document" style="position: relative;right: 9.3%;">
+        <div class="modal-content" style="background-color:cornsilk; width: max-content;">
+            <div class="modal-header">
+                <div class="FlexBox">
+                    <h4>Books not in this Library</h4>
+                    <button class="btn" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body" id="BookLibBody" style="background-color: antiquewhite;">
+                <div>
+                    <h4>BookModal</h4>
+
+                    <table id="LibraryBookTable" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Year Of Issue
+                                </th>
+                                <th>
+                                    Book Copies
+                                </th>
+                                <th>
+                                    Number of Lendings
+                                </th>
+
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="Tbody" style="text-align:center;"></tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" role="dialog" id="DetaBookModal" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: cornsilk;">
+            <div class="modal-header">
+                <div class="FlexBox">
+                    <h4>Details about this book</h4>
+                    <button class="btn" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body" id="ModalBodyDetails" style="background-color: antiquewhite;">
+                <div>
+                    <h4>BookViewModel</h4>
+                    <hr />
+
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Title
+                        </dt>
+                        <dd>
+                            <span id="TitleBook"></span>
+                        </dd>
+                        <dt>
+                            Year of Issue
+                        </dt>
+                        <dd>
+                            <span id="YearOfIssueBook"></span>
+                        </dd>
+                        <dt>
+                            Number Of Pages
+                        </dt>
+                        <dd>
+                            <span id="NrOfPagesBook"></span>
+                        </dd>
+                        <dt>
+                            Number of Lendings
+                        </dt>
+                        <dd>
+                            <span id="NrBook"></span>
+                        </dd>
+                    </dl>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/App/Library.js"></script>
+}

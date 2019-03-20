@@ -1,0 +1,14 @@
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\Classes.dll.config
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\Classes.dll
+C:\Users\viktor.ilieski\source\repos\Library\Classes\bin\Debug\Classes.pdb
+C:\Users\viktor.ilieski\source\repos\Library\Classes\obj\Debug\Domain.csprojAssemblyReference.cache
+C:\Users\viktor.ilieski\source\repos\Library\Classes\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\viktor.ilieski\source\repos\Library\Classes\obj\Debug\Classes.dll
+C:\Users\viktor.ilieski\source\repos\Library\Classes\obj\Debug\Classes.pdb
+C:\Users\Victor\Desktop\Library\Classes\bin\Debug\Classes.dll.config
+C:\Users\Victor\Desktop\Library\Classes\bin\Debug\Classes.dll
+C:\Users\Victor\Desktop\Library\Classes\bin\Debug\Classes.pdb
+C:\Users\Victor\Desktop\Library\Classes\obj\Debug\Domain.csprojAssemblyReference.cache
+C:\Users\Victor\Desktop\Library\Classes\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Victor\Desktop\Library\Classes\obj\Debug\Classes.dll
+C:\Users\Victor\Desktop\Library\Classes\obj\Debug\Classes.pdb
